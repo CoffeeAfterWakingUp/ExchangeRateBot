@@ -14,7 +14,8 @@
     <name>exchangeRateBot</name>
     <description>Demo project for Spring Boot</description>
     <properties>
-        <java.version>11</java.version>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
     <dependencies>
         <dependency>
@@ -39,6 +40,7 @@
         </dependency>
     </dependencies>
 
+
     <build>
         <plugins>
             <plugin>
@@ -51,17 +53,6 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.heroku.sdk</groupId>
-                <artifactId>heroku-maven-plugin</artifactId>
-                <version>3.0.3</version>
-                <configuration>
-                    <appName>exchangerateabot</appName>
-                    <processTypes>
-                        <web>web: java -jar ./target/exchangeRateBot-0.0.1-SNAPSHOT.jar</web>
-                    </processTypes>
                 </configuration>
             </plugin>
         </plugins>

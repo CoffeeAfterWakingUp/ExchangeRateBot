@@ -78,7 +78,7 @@ public class Handler {
             currency = CurrencyBase.EUR.getCurrencyText();
         }
         HistoricalRate historicalRate = exchangeRateHistoryService.getHistoricalRatesToTenge(tenDaysBefore, now, currency);
-        if(Optional.ofNullable(historicalRate).isEmpty()) {
+        if (!Optional.ofNullable(historicalRate).isPresent()) {
             return callBackAnswer;
         }
 

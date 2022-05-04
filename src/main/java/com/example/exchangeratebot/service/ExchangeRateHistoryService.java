@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 @Service
 @Slf4j
@@ -32,24 +31,23 @@ public class ExchangeRateHistoryService {
             String uri = "https://api.apilayer.com/exchangerates_data/timeseries?start_date={startDate}&end_date={endDate}&base={base}&symbols={symbol}";
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.add("apikey", "j9hXT1cpaYJKmNnF4iQc0C7YoyhZiclz");
+            httpHeaders.add("user-agent", "Application");
             HttpEntity<String> entity = new HttpEntity<>(null, httpHeaders);
 
             response = restTemplate.exchange(
                     uri,
                     HttpMethod.GET,
                     entity,
-                    new ParameterizedTypeReference<HistoricalRate>() {},
+                    new ParameterizedTypeReference<HistoricalRate>() {
+                    },
                     startDate, endDate, base, symbol).getBody();
             log.info("Response:{}", response);
             return response;
         } catch (Exception e) {
             log.error("Exception: {}", e.getMessage());
             throw e;
-//            return null;
         }
     }
-    
-    
-    
+
 
 }
