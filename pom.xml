@@ -59,6 +59,9 @@
                 <version>3.0.3</version>
                 <configuration>
                     <appName>exchangerateabot</appName>
+                    <processTypes>
+                        <web>web: java -jar ./target/exchangeRateBot-0.0.1-SNAPSHOT.jar</web>
+                    </processTypes>
                 </configuration>
             </plugin>
         </plugins>
